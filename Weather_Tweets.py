@@ -14,15 +14,20 @@ import json
 import random
 import requests as req
 import datetime
-from config import TW_consumer_key, TW_consumer_skey, TW_access_token, TW_access_stoken, OW_api_key
+
+consumer_key = os.environ.get("consumer_key")
+consumer_secret = os.environ.get("consumer_secret")
+access_token = os.environ.get("access_token")
+access_token_secret = os.environ.get("access_token_secret")
+weather_api_key = os.environ.get("weather_api_key")
 
 
 # In[14]:
 
 
 # # Setup Tweepy API Authentication
-auth = tweepy.OAuthHandler(TW_consumer_key, TW_consumer_skey)
-auth.set_access_token(TW_access_token, TW_access_stoken)
+auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth, parser=tweepy.parsers.JSONParser())
 
 
@@ -30,7 +35,7 @@ api = tweepy.API(auth, parser=tweepy.parsers.JSONParser())
 
 
 # Weather API Key
-weather_k= OW_api_key
+weather_k= weather_api_key
 
 
 # In[16]:
@@ -52,8 +57,8 @@ def WeatherTweet():
     print(weather_json)
 
     # Twitter credentials
-    auth = tweepy.OAuthHandler(TW_consumer_key, TW_consumer_skey)
-    auth.set_access_token(TW_access_token, TW_access_stoken)
+    auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+    auth.set_access_token(access_token, access_token_secret)
     api = tweepy.API(auth, parser=tweepy.parsers.JSONParser())
 
     # Tweet the weather
