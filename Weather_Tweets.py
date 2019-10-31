@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[13]:
 
 
 import sys
@@ -22,7 +21,6 @@ access_token_secret = os.environ.get("access_token_secret")
 weather_api_key = os.environ.get("weather_api_key")
 
 
-# In[14]:
 
 
 # # Setup Tweepy API Authentication
@@ -31,14 +29,14 @@ auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth, parser=tweepy.parsers.JSONParser())
 
 
-# In[15]:
+
 
 
 # Weather API Key
 weather_k= weather_api_key
 
 
-# In[16]:
+
 
 
 # Create a function that gets the weather in London and Tweets it
@@ -67,37 +65,14 @@ def WeatherTweet():
         (datetime.datetime.now().strftime("%I:%M %p") + " is " +\
          str(weather_json["main"]["temp"])+"F"))
 
-    # Print success message
 
 
-# In[ ]:
 
 
 # Set timer to run every 1 hour
 while(True):
     WeatherTweet()
     time.sleep(3600)
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
 
 
 
